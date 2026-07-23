@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GroceryHub — Grocery, delivered fresh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg navbar-harvest sticky-top">
+  <div class="container">
+    <a class="navbar-brand brand-mark" href="#home"><span class="leaf"><img src="images/logo.jpg" alt="Logo" width="40" height="40"></span>GroceryHub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="background:#fff;">
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
+        <li class="nav-item"><a class="nav-link cart-pill" href="#" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">🛒 Cart<span id="cartCount">0</span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <form class="d-flex search-form" role="search" onsubmit="return false;">
+        <input id="searchInput" class="form-control" type="search" placeholder="Search for atta, milk, chips…">
+        <button type="button" onclick="applyFilters()">🔍</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO / BANNER ===================== -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <p class="section-eyebrow" style="color:#F2C9A6;">Delivered in 20 minutes</p>
+        <h1 class="mt-2 mb-3">Farm-fresh groceries, before your tea gets cold.</h1>
+        <p class="lead">Vegetables picked this morning, dairy from local farms, and pantry staples — all packed and on your doorstep, quicker than you can finish your to-do list.</p>
+        <div class="d-flex gap-3 mt-4 flex-wrap">
+          <a href="#categories" class="btn btn-accent btn-lg px-4">Start shopping</a>
+          <a href="#offers" class="btn btn-outline-light btn-lg px-4">Today's offers</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-produce">
+          <div class="tag-badge hero-tag mono">FRESH TODAY</div>
+          <div class="produce-circle pc-1">
+    <img src="images/mango.jpg" alt="Mango">
+</div>
+
+<div class="produce-circle pc-2">
+    <img src="images/tomato.jpg" alt="Tomato">
+</div>
+
+<div class="produce-circle pc-3">
+    <img src="images/milk.jpg" alt="Milk">
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OFFERS CAROUSEL ===================== -->
+<section class="py-5" id="offers">
+  <div class="container">
+    <p class="section-eyebrow">Save today</p>
+    <h2 class="section-title mb-4">Offers &amp; combo deals</h2>
+
+    <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#offerCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#offerCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#offerCarousel" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="offer-slide offer-1">
+            <div>
+              <div class="tag-badge" style="position:static; display:inline-block; transform:rotate(-4deg); margin-bottom:.8rem;">FLAT 25% OFF</div>
+              <h3>Weekend Fruit &amp; Veg Bonanza</h3>
+              <p>25% off on all fresh produce, this weekend only. Fill your basket, we'll do the rest.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="offer-slide offer-2">
+            <div>
+              <div class="tag-badge" style="position:static; display:inline-block; transform:rotate(-4deg); margin-bottom:.8rem;">FESTIVAL SPECIAL</div>
+              <h3>Diwali Sweets &amp; Snacks Combo</h3>
+              <p>Buy any 3 snack packs and get the cheapest one free — because celebrations need company.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="offer-slide offer-3">
+            <div>
+              <div class="tag-badge" style="position:static; display:inline-block; transform:rotate(-4deg); margin-bottom:.8rem;">COMBO DEAL</div>
+              <h3>Dairy + Beverage Breakfast Kit</h3>
+              <p>Milk, curd, and juice bundled together at a price that makes mornings easier.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#offerCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FILTER BAR ===================== -->
+<section class="container mb-4" id="categories">
+  <div class="filter-bar">
+    <div class="row g-3 align-items-end">
+      <div class="col-6 col-md-3">
+        <label>Diet</label>
+        <select id="filterVeg" class="form-select" onchange="applyFilters()">
+          <option value="all">All</option>
+          <option value="veg">Vegetarian</option>
+          <option value="nonveg">Non-Vegetarian</option>
+        </select>
+      </div>
+      <div class="col-6 col-md-3">
+        <label>Price range</label>
+        <select id="filterPrice" class="form-select" onchange="applyFilters()">
+          <option value="all">Any price</option>
+          <option value="0-50">Under ₹50</option>
+          <option value="50-100">₹50 – ₹100</option>
+          <option value="100-200">₹100 – ₹200</option>
+          <option value="200-9999">Above ₹200</option>
+        </select>
+      </div>
+      <div class="col-6 col-md-3">
+        <label>Category</label>
+        <select id="filterCategory" class="form-select" onchange="applyFilters()">
+          <option value="all">All categories</option>
+          <option value="Fruits & Vegetables">Fruits &amp; Vegetables</option>
+          <option value="Dairy Products">Dairy Products</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Beverages">Beverages</option>
+          <option value="Household Items">Household Items</option>
+        </select>
+      </div>
+      <div class="col-6 col-md-3">
+        <label>Brand</label>
+        <select id="filterBrand" class="form-select" onchange="applyFilters()">
+          <option value="all">All brands</option>
+        </select>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <small class="text-muted" id="resultCount"></small>
+      <button class="btn btn-sm btn-outline-green" onclick="resetFilters()">Reset filters</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CATEGORY SECTIONS ===================== -->
+<main class="container">
+
+  <section class="mb-5" data-section="Fruits & Vegetables">
+    <p class="section-eyebrow">🥕 Straight from the farm</p>
+    <h2 class="section-title mb-3">Fruits &amp; Vegetables</h2>
+    <div class="row g-3" id="cat-fruits"></div>
+  </section>
+
+  <section class="mb-5" data-section="Dairy Products">
+    <p class="section-eyebrow">🥛 Chilled &amp; fresh</p>
+    <h2 class="section-title mb-3">Dairy Products</h2>
+    <div class="row g-3" id="cat-dairy"></div>
+  </section>
+
+  <section class="mb-5" data-section="Snacks">
+    <p class="section-eyebrow">🍿 Munch on this</p>
+    <h2 class="section-title mb-3">Snacks</h2>
+    <div class="row g-3" id="cat-snacks"></div>
+  </section>
+
+  <section class="mb-5" data-section="Beverages">
+    <p class="section-eyebrow">🥤 Sip &amp; refresh</p>
+    <h2 class="section-title mb-3">Beverages</h2>
+    <div class="row g-3" id="cat-beverages"></div>
+  </section>
+
+  <section class="mb-5" data-section="Household Items">
+    <p class="section-eyebrow">🧺 For the home</p>
+    <h2 class="section-title mb-3">Household Items</h2>
+    <div class="row g-3" id="cat-household"></div>
+  </section>
+
+  <p id="noResults" class="empty-state d-none">No products match your filters just yet. Try widening your search.</p>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <h6>GroceryHub</h6>
+        <p class="small">Fresh groceries delivered to your door in minutes, sourced from local farms and trusted brands.</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <h6>Shop</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#" data-bs-toggle="offcanvas" data-bs-target="#cartCanvas">Cart</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <h6>Support</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#">Track order</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Help center</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-3">
+        <h6>Contact</h6>
+        <ul class="list-unstyled small">
+          <li>📍 Kharar, Punjab</li>
+          <li>📞 +91 98765 43210</li>
+          <li>✉️ hello@groceryhub.in</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      © 2026 GroceryHub. Built for a grocery delivery store.
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== PRODUCT MODAL ===================== -->
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title display-font" id="modalName">Product name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-5">
+            <div class="modal-media" id="modalMedia">🍎</div>
+          </div>
+          <div class="col-md-7">
+            <p class="product-brand mb-1" id="modalBrand">Brand</p>
+            <p class="product-price fs-4 mb-2" id="modalPrice">₹0</p>
+            <p id="modalDesc" class="text-secondary">Description goes here.</p>
+            <div class="d-flex align-items-center gap-3 mt-3 mb-3">
+              <span class="fw-semibold">Quantity</span>
+              <div class="stepper">
+                <button type="button" onclick="changeModalQty(-1)">−</button>
+                <span id="modalQty" class="mono">1</span>
+                <button type="button" onclick="changeModalQty(1)">+</button>
+              </div>
+            </div>
+            <button class="btn btn-accent btn-lg w-100" id="modalAddBtn" onclick="addFromModal()">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CART OFFCANVAS ===================== -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title display-font">Your cart</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="cartItems" class="flex-grow-1" style="overflow-y:auto;"></div>
+    <div class="border-top pt-3 mt-2">
+      <div class="d-flex justify-content-between mb-1">
+        <span>Subtotal</span>
+        <span class="mono" id="cartSubtotal">₹0</span>
+      </div>
+      <div class="d-flex justify-content-between mb-3 small text-secondary">
+        <span>Delivery fee</span>
+        <span class="mono" id="cartDelivery">₹0</span>
+      </div>
+      <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+        <span>Total</span>
+        <span class="mono" id="cartTotal">₹0</span>
+      </div>
+      <button class="btn btn-accent w-100 btn-lg" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
